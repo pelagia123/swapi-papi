@@ -1,0 +1,16 @@
+mat-card {
+  width: 25vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.winner {
+  border: 1px solid green;
+}
+
+.loser {
+  border: 1px solid red;
+}

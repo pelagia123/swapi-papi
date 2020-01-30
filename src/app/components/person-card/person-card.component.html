@@ -1,0 +1,13 @@
+<mat-card *ngIf="person | async as person; else waitingForContent" [className]="winner ? 'winner' : 'loser'">
+  <div>
+    <p>Name: {{ person.name }}</p>
+    <p>Height: {{ person.height }}</p>
+  </div>
+  <h2 *ngIf="winner">You won!</h2>
+</mat-card>
+
+<ng-template #waitingForContent>
+  <mat-card>
+    <mat-spinner color="accent"></mat-spinner>
+  </mat-card>
+</ng-template>

@@ -1,0 +1,21 @@
+<div class="container">
+  <mat-button-toggle-group name="battle-mode" #group="matButtonToggleGroup" value="people"
+                           (change)="toggleBattleMode()">
+    <mat-button-toggle appearance="standard" value="people">People</mat-button-toggle>
+    <mat-button-toggle appearance="standard" value="starship">Starships</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <button mat-raised-button color="primary" (click)="peopleBattleModeOn ? drawPeople() : drawShips()">Next one!</button>
+  <mat-toolbar>{{ peopleBattleModeOn ? 'The highest person wins' : 'Starship with more crew wins' }}</mat-toolbar>
+  <div class="people-container" *ngIf="peopleBattleModeOn; else starshipBattleMode">
+    <app-person-card [person]="personA" [winner]="winner === 0 || winner === 2"></app-person-card>
+    <app-person-card [person]="personB" [winner]="winner === 1 || winner === 2"></app-person-card>
+  </div>
+
+  <ng-template #starshipBattleMode>
+    <div class="starships-container">
+      <app-starship-card [starship]="starshipA" [winner]="winner === 0 || winner === 2"></app-starship-card>
+      <app-starship-card [starship]="starshipB" [winner]="winner === 1 || winner === 2"></app-starship-card>
+    </div>
+  </ng-template>
+</div>
